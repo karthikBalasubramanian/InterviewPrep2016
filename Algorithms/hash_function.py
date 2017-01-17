@@ -62,7 +62,6 @@ class Solution(object):
        	all_sub_strings = []
        	for i in range(len(s)):
        		for j in range(i+1,len(s)):
-       			print i
        			if s[j]==s[i]:
        				print s[j],s[i]
 
