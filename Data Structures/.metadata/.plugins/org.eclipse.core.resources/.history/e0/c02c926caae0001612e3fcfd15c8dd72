@@ -1,0 +1,46 @@
+import java.util.Random;
+
+public class LinkedListApplications {
+	
+	 public Node reverseList(Node head) {
+		 if(head!=null){
+		     Node curr = head;
+		     Node prev = null;
+		     Node next;
+		     while(curr!=null){
+		    	 next = curr.next;
+		    	 curr.next = prev;
+		    	 prev = curr;
+		    	 curr = next;
+		     }
+		     head= prev;
+			 return head;
+		 }
+		 else{
+			 return null;
+		 }
+	    }
+
+	public static void main(String[] args) {
+		Random myRandom = new Random(20);
+		int[] generator = myRandom.ints(1,50).distinct().limit(5).toArray();
+		LinkedList myList = new LinkedList();
+
+		for (int i = 0; i < 5; i++) {
+			myList.add(generator[i]);
+
+		}
+		myList.display(myList.head);
+		LinkedListApplications app = new LinkedListApplications();
+		Node reversedNode = app.reverseList(myList.head);
+		System.out.println("reversing!!!");
+		myList.display(reversedNode);
+		LinkedList oneNodeList = new LinkedList();
+		oneNodeList.add(1);
+		Node oneNodeReverse = app.reverseList(oneNodeList.head);
+		oneNodeList.display(oneNodeReverse);
+		
+
+	}
+
+}

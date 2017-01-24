@@ -14,5 +14,4 @@ INDEX VERSION 1.127+/home/bks4line/Documents/InterviewPrep2016/Data Structures/.
 2066489604.index
 1913109094.index
 3888198363.index
-3261358673.index
 2982035129.index

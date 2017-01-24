@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class LinkedList {
 
 	// Example implementation of Singly linked list
@@ -79,43 +77,43 @@ public class LinkedList {
 		totalSize++;
 	}
 	
-	public Node delete(int data){
+	
+
+	public Node delete(int data) {
 		// Situations
 		// first get the position of the data and then delete
 		// then delete from the position. same as insert with small difference
-		
+
 		Node prev = null;
 		Node curr = head;
-		int i=0;
-		int positionToDelete =  getPositionForData(data);
-		if (positionToDelete==-1){
+		int i = 0;
+		int positionToDelete = getPositionForData(data);
+		if (positionToDelete == -1) {
 			return null;
-		}else{
-			while(i<positionToDelete){
+		} else {
+			while (i < positionToDelete) {
 				prev = curr;
 				curr = curr.next;
 				i++;
 			}
-			if(prev == null){
+			if (prev == null) {
 				head = curr.next;
-				
-			}else{
+
+			} else {
 				prev.next = curr.next;
-				
+
 			}
 			return curr;
 		}
-		
-		
+
 	}
-	
-	
-	public int getPositionForData(int data){
-		int i=-1;
-		Node curr=head;
-		while(curr!=null){
+
+	public int getPositionForData(int data) {
+		int i = -1;
+		Node curr = head;
+		while (curr != null) {
 			i++;
-			if(curr.data==data){
+			if (curr.data == data) {
 				return i;
 			}
 			curr = curr.next;
@@ -123,15 +121,21 @@ public class LinkedList {
 		return -1;
 	}
 
-	public void display() {
-		Node curr = head;
-		int i = 0;
-		while (curr != null) {
-			System.out.println("position " + String.valueOf(i) + " has data " + String.valueOf(curr.data));
-			i++;
-			curr = curr.next;
+	public void display(Node displayHead) {
+		if (displayHead == null) {
+			System.out.println("the list is empty");
+		} else {
+			Node curr = displayHead;
+			int i = 0;
+			while (curr != null) {
+				System.out.println("position " + String.valueOf(i) + " has data " + String.valueOf(curr.data));
+				i++;
+				curr = curr.next;
+			}
 		}
 	}
+
+	
 
 	public Node find(int data) {
 		// Scenarios: 1. if linked list is empty
@@ -162,30 +166,30 @@ public class LinkedList {
 		for (int i = 0; i <= 5; i++) {
 			newList.add(i);
 		}
-		newList.display();
+		newList.display(newList.head);
 		System.out.println();
 		System.out.println("Inserting in the beginning");
 		newList.insertInBeg(-1);
-		newList.display();
+		newList.display(newList.head);
 		System.out.println();
 		System.out.println("inserting in a position 2");
 		newList.insertInPos(10, 2);
-		newList.display();
+		newList.display(newList.head);
 		System.out.println();
 		System.out.println("inserting in position larger than size");
 		newList.insertInPos(1, 1000);
-		newList.display();
+		newList.display(newList.head);
 		System.out.println();
 		System.out.println("Deleting");
 		Node deletedNode = newList.delete(-1);
-		if (deletedNode == null){
+		if (deletedNode == null) {
 			System.out.println("Sorry data not there in linkedlist");
-		}else{
-			System.out.println("Deleted node's data is "+deletedNode.data);
+		} else {
+			System.out.println("Deleted node's data is " + deletedNode.data);
 		}
 		System.out.println();
-		newList.display();
+		newList.display(newList.head);
 		System.out.println();
-		
+
 	}
 }
