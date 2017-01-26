@@ -1,3 +1,4 @@
+package com.interview.linkedlist;
 public class LinkedList {
 
 	// Example implementation of Singly linked list

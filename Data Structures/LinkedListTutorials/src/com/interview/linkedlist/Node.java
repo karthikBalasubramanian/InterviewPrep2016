@@ -1,3 +1,4 @@
+package com.interview.linkedlist;
 
 public class Node {
 	int data;
