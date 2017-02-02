@@ -31,6 +31,18 @@ public class Trees {
 		
 	}
 	
+	public boolean isBinarySearchTree(BstNode root, int minValue,int maxValue){
+		if(root==null){
+			return true;
+		}
+		if(root.data>=minValue&&root.data<maxValue && isBinarySearchTree(root.left, minValue, root.data)&&isBinarySearchTree(root.right, root.data, maxValue)){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+	
 	public boolean SearchDataInTree(BstNode root,int data){
 		if(root == null){
 			return false;
@@ -62,6 +74,22 @@ public class Trees {
 		}
 	}
 	
+	public boolean binarySearchTreeCheckUtil(BstNode root,int min,int max){
+		if(root==null){
+			return true;
+		}
+		if((root.data>=min)&&(root.data<max)&&binarySearchTreeCheckUtil(root.left, min, root.data)
+				&& binarySearchTreeCheckUtil(root.right, root.data, max)){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+	
+	public boolean checkIfBinarySearchTree(BstNode root){
+		return binarySearchTreeCheckUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
 	public void getLevelOrder(BstNode root){
 		if(root == null){
 			return;
@@ -146,6 +174,96 @@ public class Trees {
 		}
 	}
 	
+//	 binary search tree deletion
+	
+	public BstNode deleteNode(BstNode root,int data){
+		System.out.println("data to delete"+data);
+		if(root==null){
+			System.out.println("inside root.data==null");
+			return null;
+			
+		}
+		
+		
+//		First search for the data
+		else if(data>root.data){
+			root.right = deleteNode(root.right, data);
+		}
+		else if(data<root.data){
+			root.left = deleteNode(root.left, data);
+		}else if(root.data==data){
+			//we have found data/node. Now what?
+//			how to delete node?
+//			If node does not have any child?
+			if(root.left==null&&root.right==null){
+				root = null;
+			}
+//			if node has only one child?
+			else if(root.left==null){
+				root = root.right;
+			}
+			else if(root.right==null){
+				root =  root.left;
+			}
+//			if node has two child? search the max of left node or min of right node
+			else {
+				int minAtRight = findMin(root.right);
+				System.out.println("min value in right tree is "+ minAtRight);
+				BstNode temp = new BstNode(minAtRight);
+				root.data = temp.data;
+//				search the duplicated data in root at right, and remove the node. adjust the right
+//				which is the deleted node's nearest head.
+				root.right =  deleteNode(root.right, temp.data);
+			}
+			
+		}
+		
+		
+		
+		return root;
+	}
+	
+	public BstNode findNode(BstNode root,int data){
+		if (root==null){
+			return null;
+		}
+		if(root.data==data){
+			return root;
+		}
+		else if(data<= root.data){
+			return findNode(root.left, data); 
+		}else{
+			return findNode(root.right, data);
+		}
+	}
+	
+	public void inOrderSuccessor(BstNode root,int whoseSuccessor){
+//		This function is to identify the inorder successor of an integer.
+		BstNode getPredicessor = findNode(root, whoseSuccessor);
+		if(getPredicessor== null){
+			System.out.println("sorry the data is not found in the tree.\n cant find predicessor");
+		}
+//		successor is the deepest parent for whom the child node is on the left side.
+//		run through the tree from root to the getPredicissor node.
+//		then  keep updating successor data if get predicissor's data is less than current data
+//		else move to the right.
+		else{
+			BstNode current = root;
+			BstNode successor = null;
+			while(getPredicessor.data!=current.data){
+				if(getPredicessor.data<current.data){
+					successor = current;
+					current = current.left;
+				}else{
+					current = current.right;
+				}
+			}
+			
+			System.out.println("sucessor for node with value "+getPredicessor.data+" is "+successor.data);
+			
+		}
+	}
+	
 	public static void main(String[] args){
 		
 		Trees treeObj = new Trees();
@@ -179,6 +297,8 @@ public class Trees {
 			}
 		}
 		
+		System.out.println("\nCheck for binary tree");
+		System.out.println("is binary tree? "+ treeObj.checkIfBinarySearchTree(root));
 		System.out.println();
 		System.out.println("Minimimum value in tree is "+ treeObj.findMin(root));
 		System.out.println();
@@ -188,20 +308,28 @@ public class Trees {
 		// remember height of a root node is same as maximum depth from leaf
 		System.out.println("height of the tree is "+ treeObj.getHeight(root));
 		
-		int[] levelOrder = new int[]{4,2,5,1,3,6,7};
+		System.out.println("\n get successor for inorder traversal");
+		treeObj.inOrderSuccessor(root, 39);
+		System.out.println();
+		int[] levelOrder = new int[]{12,5,15,3,7,13,17,1,9};
 		root = null;
 		System.out.println();
 		System.out.println("doing level order or breadth first search!");
 		for(int i=0; i<levelOrder.length; i++){
 			root = treeObj.insertNodeInTree(root, levelOrder[i]);
 		}
+//		deleting a node before printing level order
 		
 		System.out.println();
 		System.out.println("printing started\n");
 
 		treeObj.getLevelOrder(root);
-		System.out.println();
-		System.out.println("depth first search\n");
+		
+		System.out.println("\ndeleting node with data 15");
+		root = treeObj.deleteNode(root, 15);			
+		System.out.println("\ncheck if tree is adjusted");
+		treeObj.getLevelOrder(root);
+		System.out.println("\ndepth first search\n");
 
 		System.out.println("1. pre-order print\n");
 		treeObj.preOrderPrint(root);
@@ -209,6 +337,7 @@ public class Trees {
 		treeObj.inOrderPrint(root);
 		System.out.println("\n3.post-order print\n");
 		treeObj.postOrderPrint(root);
+		
 		
 	}
 
