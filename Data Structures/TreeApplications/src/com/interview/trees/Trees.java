@@ -264,6 +264,22 @@ public class Trees {
 		}
 	}
 	
+	public boolean isBalanced(BstNode root) {
+        
+		if(root==null){
+            return true;
+        }else{
+        	System.out.println("left height"+ getHeight(root.left));
+        	System.out.println("right height "+ getHeight(root.right));
+        	if (java.lang.Math.abs(getHeight(root.left)-getHeight(root.right))<=1&&isBalanced(root.left)&& isBalanced(root.right)){
+        		return true;
+        	}
+        	else return false;
+            
+        }
+        
+    }
+	
 	public static void main(String[] args){
 		
 		Trees treeObj = new Trees();
@@ -307,6 +323,8 @@ public class Trees {
 		System.out.println("Finding height of the node");
 		// remember height of a root node is same as maximum depth from leaf
 		System.out.println("height of the tree is "+ treeObj.getHeight(root));
+		
+		System.out.println("\n is balanced?"+treeObj.isBalanced(root));
 		
 		System.out.println("\n get successor for inorder traversal");
 		treeObj.inOrderSuccessor(root, 39);
