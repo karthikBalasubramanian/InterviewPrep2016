@@ -90,6 +90,8 @@ public class Trees {
 	public boolean checkIfBinarySearchTree(BstNode root){
 		return binarySearchTreeCheckUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
+	
+
 	public void getLevelOrder(BstNode root){
 		if(root == null){
 			return;
