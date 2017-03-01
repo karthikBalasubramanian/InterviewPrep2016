@@ -3,8 +3,8 @@
 import random
 
 def newtons_method(n):
-	guess =  float(n/2)
-	for i in range(30):
+	guess =  n*n
+	while guess>n:
 		new_guess = float(n/guess)
 		guess =  0.5*(guess+new_guess)
 
@@ -29,6 +29,7 @@ def score(goal,randomString):
 			my_score+=1
 
 	return my_score/float(len(goal))
+
 
 
 
