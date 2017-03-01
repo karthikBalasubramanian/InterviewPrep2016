@@ -245,7 +245,7 @@ public class BinarySearch {
 		int[] findArray = new int[] { 1, 10, 10, 10, 10, 13 };
 		System.out.println("Occurances of 1  " + obj.findTotalOccurancesOfElementInArray(findArray, 1));
 		int[] rotatedArray = new int[] { 4, 5, 6, 7, 0, 1, 2 };
-		System.out.println("min value index in the array is " + obj.findMin(rotatedArray));
+		System.out.println("min value index in the candidates is " + obj.findMin(rotatedArray));
 		int [] nums = new int [] {0, 1, 0, 3, 12};
 		obj.moveZeroes(nums);
 		int []profitNums = new int [] {7,1,5,3,6,4};
