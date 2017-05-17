@@ -2,28 +2,29 @@
 # Author: Karthik Balasubramanian
 
 
-def quicksort(array):
-	quick_sort_helper(array,0,len(array)-1)
+#  check this
+def quicksort(candidates):
+	quick_sort_helper(candidates,0,len(candidates)-1)
 
-def quick_sort_helper(array,start,end):
+def quick_sort_helper(candidates,start,end):
 	if(start<end):
 
-		pivot =  find_pivot(array,start,end)
-		quick_sort_helper(array,start,pivot-1)
-		quick_sort_helper(array,pivot+1,end)
+		pivot =  find_pivot(candidates,start,end)
+		quick_sort_helper(candidates,start,pivot-1)
+		quick_sort_helper(candidates,pivot+1,end)
 
-def find_pivot(array,start,end):
-	pivot_value =  array[start]
+def find_pivot(candidates,start,end):
+	pivot_value =  candidates[start]
 	left_mark = start+1
 	right_mark = end
 	done = False
 	
 	while(not done):
 		
-		while (left_mark<=right_mark and array[left_mark]<=pivot_value):
+		while (left_mark<=right_mark and candidates[left_mark]<=pivot_value):
 			left_mark+=1
 		
-		while (right_mark>=left_mark and array[right_mark]>=pivot_value):
+		while (right_mark>=left_mark and candidates[right_mark]>=pivot_value):
 			right_mark-=1
 		
 		if(right_mark<left_mark):
@@ -31,13 +32,13 @@ def find_pivot(array,start,end):
 		
 		else:
 
-			temp = array[left_mark]
-			array[left_mark] = array[right_mark]
-			array[right_mark] = temp
+			temp = candidates[left_mark]
+			candidates[left_mark] = candidates[right_mark]
+			candidates[right_mark] = temp
 
-	temp = array[start]
-	array[start] = array[right_mark]
-	array[right_mark]= temp
+	temp = candidates[start]
+	candidates[start] = candidates[right_mark]
+	candidates[right_mark]= temp
 
 	return right_mark
 
@@ -88,3 +89,6 @@ def find_pivot(array,start,end):
 a = [54,26,93,17,77,31,44,55,20]
 quicksort(a)
 print a
+
+
+

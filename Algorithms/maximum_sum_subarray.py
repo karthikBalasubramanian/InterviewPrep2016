@@ -16,32 +16,32 @@ class Solution(object):
                 final_list.append((sum,nums[i:j+1]))
         
         max =  final_list[0][0]
-        max_array = final_list[0][1]
+        max_candidates = final_list[0][1]
         for val1,val2 in final_list:
             if (val1>max):
                 max = val1
-                max_array = val2
-        return max,max_array
+                max_candidates = val2
+        return max,max_candidates
 
     def maxSubArrayMerge(self,nums):
         if len(nums)==1:
             return nums[0]
         else:
             mid = len(nums)//2
-            left_array = nums[:mid]
-            right_array = nums[mid:]
-            left_mss = self.maxSubArrayMerge(left_array)
-            right_mss = self.maxSubArrayMerge(right_array)
+            left_candidates = nums[:mid]
+            right_candidates = nums[mid:]
+            left_mss = self.maxSubArrayMerge(left_candidates)
+            right_mss = self.maxSubArrayMerge(right_candidates)
 
-            left_max = left_array[-1] 
-            right_max = right_array[0]
+            left_max = left_candidates[-1] 
+            right_max = right_candidates[0]
             sum=0
-            for i in range(len(right_array)):
-                sum+=right_array[i]
+            for i in range(len(right_candidates)):
+                sum+=right_candidates[i]
                 right_max = max(sum,right_max)
             sum = 0
-            for i in range(len(left_array)-1,-1,-1):
-                sum+=left_array[i]
+            for i in range(len(left_candidates)-1,-1,-1):
+                sum+=left_candidates[i]
                 left_max = max(sum, left_max)
 
             ans = max(left_mss,right_mss)

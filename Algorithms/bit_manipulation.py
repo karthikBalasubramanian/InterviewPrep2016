@@ -55,11 +55,11 @@ def power_of_a_number(n,base):
 
 
 def sortColors(nums):
-
-    length_of_array = len(nums)
-    for i in range(length_of_array-1):
+    #  WE can also use counting sort
+    length_of_candidates = len(nums)
+    for i in range(length_of_candidates-1):
         amin = i
-        for j in range(i+1,length_of_array):
+        for j in range(i+1,length_of_candidates):
             if nums[j]<nums[amin]:
                 amin = j
         temp =  nums[i]

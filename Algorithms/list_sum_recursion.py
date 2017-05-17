@@ -2,11 +2,11 @@
 # Author: Karthik Balasubramanian
 
 
-def list_sum(array):
-	if len(array)==1:
-		return array[0]
+def list_sum(candidates):
+	if len(candidates)==1:
+		return candidates[0]
 	else:
-		return array[0] + list_sum(array[1:])
+		return candidates[0] + list_sum(candidates[1:])
 
 
 def num_with_any_base(num,base):

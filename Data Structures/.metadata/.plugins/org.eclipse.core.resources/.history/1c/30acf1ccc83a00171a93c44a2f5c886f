@@ -1,0 +1,29 @@
+package com.tutorials.collection;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+public class Duplicates {
+
+	public ArrayList<Double> removeDuplicates(double[] array) {
+
+		if (array.length > 0) {
+			HashSet<Double> finalSet = new HashSet<Double>();
+
+			for (double val : array) {
+				finalSet.add(val);
+			}
+
+			return new ArrayList<Double>(finalSet);
+		} else {
+			return new ArrayList<Double>();
+		}
+
+	}
+
+	public static void main(String[] args) {
+		double[] arr = new double[]{1,1,2,3};
+		Duplicates obj = new Duplicates();
+		System.out.println(obj.removeDuplicates(arr));
+	}
+}

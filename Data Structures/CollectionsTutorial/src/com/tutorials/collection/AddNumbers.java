@@ -1,0 +1,120 @@
+package com.tutorials.collection;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class AddNumbers {
+	public static final Logger logger = Logger.getLogger(AddNumbers.class.getName());
+	
+	public Stack<Integer> returnStack(char[] array) {
+		Stack<Integer> finalStack = new Stack<Integer>();
+		for (char eachChar : array) {
+			if (Character.isDigit(eachChar)) {
+				finalStack.push(Character.getNumericValue(eachChar));
+			}
+		}
+		return finalStack;
+
+	}
+	
+	public Stack<Integer> addTwoCharArraysUsingStack(Stack<Integer> firstStack, char[] arrayTwo) {
+
+		
+		Stack<Integer> secondStack = returnStack(arrayTwo);
+		
+		if(firstStack.isEmpty()){
+			return secondStack;
+		}
+		
+		
+		Stack<Integer> finalStack = new Stack<Integer>();
+		int carry =0;
+		
+		while(!firstStack.isEmpty() & !secondStack.isEmpty()){
+			int val = firstStack.pop()+secondStack.pop()+carry;
+			if(val>9){
+				carry = val/10;
+				val = val%10;
+			}else{
+				carry =0;
+			}
+			finalStack.add(0,val);
+		}
+		
+		while(!firstStack.isEmpty()){
+			int val = firstStack.pop()+carry;
+			if(val>9){
+				carry = val/10;
+				val = val%10;
+			}
+			else{
+				carry =0;
+			}
+			finalStack.add(0,val);
+		}
+		
+		while(!secondStack.isEmpty()){
+			int val = secondStack.pop()+carry;
+			if(val>9){
+				carry = val/10;
+				val = val%10;
+			}
+			else{
+				carry =0;
+			}
+			finalStack.add(0,val);
+			
+		}
+		
+		if(carry>0){
+			finalStack.add(0,carry);
+			carry =0;
+		}
+		
+		
+		
+		
+		
+		return finalStack;
+		
+	}
+
+	public static void main(String[] args) {
+		BufferedReader br = null;
+		AddNumbers obj = new AddNumbers();
+		
+		Stack<Integer> finalStack = new Stack<Integer>();
+		
+		try {
+			br = new BufferedReader(new FileReader("numbers.txt"));
+			String line;
+			while ((line = br.readLine()) != null) {
+				finalStack = obj.addTwoCharArraysUsingStack(finalStack, line.toCharArray());
+				System.out.println(finalStack);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			logger.log(Level.INFO, "file not found exception");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.log(Level.INFO, "next line not found exception");
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					logger.log(Level.INFO, "buffered reader cannot be closed exception");
+				}
+			}
+		}
+
+	}
+
+}

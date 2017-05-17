@@ -18,14 +18,14 @@ public class StackInArray {
 	int[] numArr= new int[3];
 	
 	public void push(int num){
-//		System.out.println("top value: "+ top +" array length: "+numArr.length);
+//		System.out.println("top value: "+ top +" candidates length: "+numArr.length);
 		if(top==numArr.length-1){
-			//get twice the size of current array and copy elements in the
-			//stack to the new array.
+			//get twice the size of current candidates and copy elements in the
+			//stack to the new candidates.
 //			System.out.println("length maxed out. Adding new length. "
-//					+ "Size of the array before "+numArr.length);
+//					+ "Size of the candidates before "+numArr.length);
 			expandArray();
-//			System.out.println("Size of the array after "+numArr.length);
+//			System.out.println("Size of the candidates after "+numArr.length);
 		}
 		
 		numArr[++top] = num;
@@ -183,7 +183,7 @@ public class StackInArray {
 		System.out.println();
 		String[] strArray = {"12","-3","*","5","4","*","+","9","-"};
 		System.out.println("final value of evaluation is "+ obj.evalRPN(strArray));
-		System.out.println("evaluating PN. Just reverse the array");
+		System.out.println("evaluating PN. Just reverse the candidates");
 		String[] nStrArray ={"-","+","*","2","3","*","5","4","9"};
 		List<String> list =  Arrays.asList(nStrArray);
 		Collections.reverse(list);

@@ -1,0 +1,63 @@
+package com.interview.prep;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class CountIslands {
+	int m;
+	int n;
+
+	
+public int numIslands(char[][] grid) {
+	int count=0;
+	m = grid.length;
+	n = grid[0].length;
+	if(m==0) return 0;
+	for(int i=0; i<m; i++){
+		for(int j=0; j<n;j++){
+			if(grid[i][j]=='1'){
+				count +=1;
+				dfsMarkZeroAfterVisit(grid,i,j);
+			}
+		}
+	}
+	return 0;
+        
+        
+        
+    }
+
+public void dfsMarkZeroAfterVisit(char[][]grid, int i, int j){
+	if(i<0 ||j<0 ||i>=m || j>=n || grid[i][j]!='1') return;
+	
+	grid[i][j]='0';
+	dfsMarkZeroAfterVisit(grid,i-1,j);
+	dfsMarkZeroAfterVisit(grid,i+1,j);
+	dfsMarkZeroAfterVisit(grid,i,j-1);
+	dfsMarkZeroAfterVisit(grid,i,j+1);
+	
+	
+	
+	
+	
+}
+
+public static void main(String [] args){
+	String s = "abc2fg";
+	System.out.println(s);
+	StringBuilder sb = new StringBuilder(s);
+//	
+//	if(sb.toString().contains("2")){
+//		sb = new StringBuilder(sb.substring(0, sb.length()-1));
+//	}
+	
+	int[] array = new int[5];
+	
+	sb = sb.deleteCharAt(3);
+	System.out.println(sb.toString());
+	
+	System.out.println(sb.toString());
+}
+
+
+}

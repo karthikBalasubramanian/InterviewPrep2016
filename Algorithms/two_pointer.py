@@ -9,9 +9,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # Given a sorted array, remove the duplicates in place such 
+        # Given a sorted candidates, remove the duplicates in place such 
         # that each element appear only once and return the new length.
-        # Do not allocate extra space for another array, 
+        # Do not allocate extra space for another candidates, 
         # you must do this in place with constant memory.
 
 
@@ -57,7 +57,7 @@ class Solution(object):
         #         if arr[j]==target-nums[i]:
         #             return [i,j]
         # method 2 O(n)
-        # 1. covert array to doctionary
+        # 1. covert candidates to doctionary
         # iterate through dictionary.
         # if target - value of dictionary is there in dictionary, 
         # return keys of these two values
@@ -134,7 +134,7 @@ class Solution(object):
         return max_area
 
     # Rotate Array
-    # Rotate an array of n elements to the right by k steps.
+    # Rotate an candidates of n elements to the right by k steps.
     def reverse_all(self,arr,pos_head,pos_tail):
         while(pos_head<pos_tail):
             self.swap(arr,pos_head,pos_tail)

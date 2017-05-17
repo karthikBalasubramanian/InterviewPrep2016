@@ -1,7 +1,7 @@
 #!/home/bks4line/anaconda2/bin/python
 # Author: Karthik Balasubramanian
 import random
-
+#  check this
 def newtons_method(n):
 	guess =  n*n
 	while guess>n:
@@ -10,7 +10,7 @@ def newtons_method(n):
 
 	return guess
 
-print newtons_method(13)
+print newtons_method(4)
 
 # infinite monkey problem
 def generate_one(strlen):
@@ -45,4 +45,4 @@ def main():
 		randomString = generate_one(len(goalString))
 		new_score = score(goalString,randomString)
 
-main()
+

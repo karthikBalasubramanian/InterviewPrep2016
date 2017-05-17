@@ -68,7 +68,7 @@ public class LinkedListApplications {
 	}
 
 	public Node recursiveReverse(Node currNode){
-		if(currNode==null || currNode.next==null){
+		if(currNode.next==null){
 			return currNode;
 		}
 		Node nextNode = currNode.next;
@@ -192,7 +192,7 @@ public class LinkedListApplications {
 		// find the length of two linked lists
 		// subtract the difference.
 		// then finally start searching for only the common length shared between the two.
-		
+		// l2 is always the biggest list
 		int len1 = lengthOfLinkedList(l1);
 		int len2 = lengthOfLinkedList(l2);
 		int distance =0;

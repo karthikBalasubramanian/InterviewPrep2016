@@ -1,0 +1,76 @@
+package com.tutorials.collection;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class AddNumbers {
+	public static final Logger logger = Logger.getLogger(AddNumbers.class.getName());
+
+	public Stack<Integer> returnStack(char[] array) {
+		Stack<Integer> finalStack = new Stack<Integer>();
+		for (char eachChar : array) {
+			if (Character.isDigit(eachChar)) {
+				finalStack.add(Character.getNumericValue(eachChar));
+			}
+		}
+
+		return finalStack;
+
+	}
+	
+	public int getCarry(int number){
+		if(number<10){
+			return 0;
+		}else{
+			return number/10;
+		}
+	}
+
+	public void addTwoCharArraysUsingStack(char[] arrayOne, char[] arrayTwo) {
+
+		Stack<Integer> firstStack = returnStack(arrayOne);
+		Stack<Integer> secondStack = returnStack(arrayTwo);
+		
+		while(!firstStack.isEmpty() & !secondStack.isEmpty()){
+			int val = firstStack.pop()+secondStack.pop();
+			
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		BufferedReader br = null;
+		AddNumbers obj = new AddNumbers();
+		System.out.println(obj.getCarry(10));
+		
+		try {
+			br = new BufferedReader(new FileReader("numbers.txt"));
+			String line;
+			while ((line = br.readLine()) != null) {
+				System.out.println(line.toCharArray());
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			logger.log(Level.INFO, "file not found exception");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.log(Level.INFO, "next line not found exception");
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					logger.log(Level.INFO, "buffered reader cannot be closed exception");
+				}
+			}
+		}
+
+	}
+
+}

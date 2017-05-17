@@ -1,11 +1,11 @@
 #!/home/bks4line/anaconda2/bin/python
 # Author: Karthik Balasubramanian
 
-def spiral_traversal(array):
+def spiral_traversal(candidates):
 	top_row = 0
 	left_col = 0
-	right_col =  len(array[0])-1
-	bottom_row = len(array)-1
+	right_col =  len(candidates[0])-1
+	bottom_row = len(candidates)-1
 
 	direction = 0
 	final_list = []
@@ -14,7 +14,7 @@ def spiral_traversal(array):
 		if(direction==0):
 			for i in range(left_col,right_col+1):
 				print "in direction 0 {0}".format(i)
-				final_list.append(array[top_row][i])
+				final_list.append(candidates[top_row][i])
 			top_row+=1
 			
 		
@@ -22,21 +22,21 @@ def spiral_traversal(array):
 			print right_col
 			for i in range(top_row,bottom_row+1):
 				print "in direction 1 {0}".format(i)
-				final_list.append(array[i][right_col])
+				final_list.append(candidates[i][right_col])
 			right_col -=1
 			
 		
 		elif(direction==2):
 			for i in range(right_col,left_col-1,-1):
 				print "in direction 2 {0}".format(i)
-				final_list.append(array[bottom_row][i])
+				final_list.append(candidates[bottom_row][i])
 			bottom_row -=1
 			
 		
 		elif(direction==3):
 			for i in range(bottom_row,top_row-1,-1):
 				print "in direction 3 {0}".format(i)
-				final_list.append(array[i][left_col])
+				final_list.append(candidates[i][left_col])
 			left_col +=1
 		
 		direction = (direction+1)%4

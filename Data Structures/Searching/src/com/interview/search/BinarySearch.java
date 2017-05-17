@@ -122,7 +122,7 @@ public class BinarySearch {
 	// }
 
 	public int findMinimum(int[] nums, int low, int high, int totalLength) {
-
+		//  this is like finding pivot problem
 		// # already sorted condition
 		if (nums[low] < nums[high]) {
 			return nums[low];
@@ -137,9 +137,13 @@ public class BinarySearch {
 		int prev_to_mid = (mid + totalLength - 1) % (totalLength);
 		if (nums[mid] < nums[prev_to_mid] && nums[mid] < nums[next_to_mid]) {
 			return nums[mid];
-		} else if (nums[mid] < nums[high]) {
+
+		} else if (nums[high] > nums[mid]) {
+			//  there cannot be any value which is minimum between mid and high
+			//  so find between low and high -1
 			return findMinimum(nums, low, mid - 1, totalLength);
 		} else {
+			// same way
 			return findMinimum(nums, mid + 1, high, totalLength);
 		}
 
@@ -159,7 +163,8 @@ public class BinarySearch {
 			if (nums[mid] == findNum) {
 				return mid;
 			}
-			// if mid is less than high?
+			// if mid is less than high? mid to high is already sorted
+			// check in the sorted side
 			else if (nums[mid] <= nums[high]) {
 				// if the number between mid and high?
 				if (findNum > nums[mid] && findNum <= nums[high]) {
@@ -173,6 +178,7 @@ public class BinarySearch {
 
 				}
 			}
+			// 
 			// if low is less than mid?
 			else if (nums[low] <= nums[mid]) {
 

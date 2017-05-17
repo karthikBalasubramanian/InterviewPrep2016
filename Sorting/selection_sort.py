@@ -8,30 +8,30 @@ def swap(alist,i,j):
 	alist[i]=alist[j]
 	alist[j]=temp
 
-def selection_sort(array):
+def selection_sort(candidates):
 
-	# length_of_array = len(array)
-	# for i in range(length_of_array-1):
+	# length_of_candidates = len(candidates)
+	# for i in range(length_of_candidates-1):
 	# 	amin = i
-	# 	for j in range(i+1,length_of_array):
-	# 		if array[j]<array[amin]:
+	# 	for j in range(i+1,length_of_candidates):
+	# 		if candidates[j]<candidates[amin]:
 	# 			amin = j
-	# 	temp =  array[i]
-	# 	array[i] = array[amin]
-	# 	array[amin] = temp
-	length_of_array = len(array)
+	# 	temp =  candidates[i]
+	# 	candidates[i] = candidates[amin]
+	# 	candidates[amin] = temp
+	length_of_candidates = len(candidates)
 	
-	for i in range(length_of_array-1,0,-1):
+	for i in range(length_of_candidates-1,0,-1):
 		position_of_max = 0
 		for j in range(1,i+1):
-			if array[j]>array[position_of_max]:
+			if candidates[j]>candidates[position_of_max]:
 				position_of_max = j
 
-		temp = array[position_of_max]
-		array[position_of_max] = array[i]
-		array[i] = temp
+		temp = candidates[position_of_max]
+		candidates[position_of_max] = candidates[i]
+		candidates[i] = temp
 
-	return array
+	return candidates
 
 
 

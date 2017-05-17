@@ -357,6 +357,8 @@ public class Trees {
 		treeObj.inOrderPrint(root);
 		System.out.println("\n3.post-order print\n");
 		treeObj.postOrderPrint(root);
+		int [] a =new int[5];
+		
 		
 		
 	}

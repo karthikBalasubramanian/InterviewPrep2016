@@ -22,10 +22,17 @@ class Solution(object):
             col_length = len(matrix[0])-1
             i=0 
             j=col_length
-        
-        
+            #  lets say its a 3X3 matrix
+            #  start from 1st row and third colum
+            #  if the number is what they expect
+            #  print the number
+            #  else if number is less than the index number
+            #  got to the left of the row
+            #  else go to the next row
+            #  start fr
             while(i<=row_length and j>=0):
                 if(target == matrix[i][j]):
+                    # 
                 	print matrix[i][j]
                 	return True
                 elif(target > matrix[i][j]):

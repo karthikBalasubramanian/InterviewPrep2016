@@ -13,7 +13,7 @@ class Solution(object):
         self.shuffled =  nums[:]
     def reset(self):
         """
-        Resets the array to its original configuration and return it.
+        Resets the candidates to its original configuration and return it.
         :rtype: List[int]
         """
         self.temp = self.original[:]
@@ -24,7 +24,7 @@ class Solution(object):
 
     def shuffle(self):
         """
-        Returns a random shuffling of the array.
+        Returns a random shuffling of the candidates.
         :rtype: List[int]
         """
         
@@ -37,7 +37,16 @@ class Solution(object):
         self.temp = self.original[:]
         return self.shuffled
         # self.fisher_yates()
-        
+    
+
+    def fisher_yates_shuffle(self,items):
+        for i in range(len(items)):
+            randomIndex = random.randint(i, len(items)-1)
+            print i,randomIndex, random.randint(2,2)
+            temp = items[randomIndex]
+            items[randomIndex] = items[i]
+            items[i] = temp
+        return items
     
 
 
@@ -52,3 +61,4 @@ obj = Solution([1,2,3])
 param_1 = obj.reset()
 print param_1
 param_2 = obj.shuffle()
+print obj.fisher_yates_shuffle(list('ABC'))

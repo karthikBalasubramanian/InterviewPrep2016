@@ -2,43 +2,47 @@
 # Author: Karthik Balasubramanian
  
 
-def merge_sort(array):
-	if(len(array)>1):
+def merge_sort(candidates):
+	if(len(candidates)>1):
 
-		divider =  len(array)//2
-		print "splitting list {0}".format(array)
+		divider =  len(candidates)//2
+		print "splitting list {0}".format(candidates)
 		# storing memory costs
-		left_half =  array[:divider]
-		right_half =  array[divider:]
+		left_half =  candidates[:divider]
+		right_half =  candidates[divider:]
+		
 		merge_sort(left_half)
 		merge_sort(right_half)
-
-		i=0
+		#  runs over left list
+		i=0  
+		#  runs over right list
 		j=0
+		#  runs over candidate list
 		k=0
-
+		#  left and right half gets sorted after the child operation divide and conquer
+		print "left half {0} right half {1}".format(left_half,right_half)
 		while(i<len(left_half) and j<len(right_half)):
 			if(left_half[i]<right_half[j]):
-				array[k] = left_half[i]
+				candidates[k] = left_half[i]
 				i+=1
 			else:
-				array[k] =  right_half[j]
+				candidates[k] =  right_half[j]
 				j+=1
 			
 			k+=1
 
 		while (i<len(left_half)):
-			array[k] = left_half[i]
+			candidates[k] = left_half[i]
 			i+=1
 			k+=1
 		while(j<len(right_half)):
-			array[k] = right_half[j]
+			candidates[k] = right_half[j]
 			j+=1
 			k+=1
 
-		print "merging {0}".format(array)
+		print "merging {0}".format(candidates)
 
-	return array
+	return candidates
 
 
 

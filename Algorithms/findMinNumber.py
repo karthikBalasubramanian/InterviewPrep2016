@@ -3,22 +3,22 @@
  
 # O(n^2) solution
 # Stupid solution
-def findMinQuad(array):
-	minVal =  array[0]
-	for i in array:
-		for j in range(len(array)):
-			if array[j]<minVal:
-				minVal = array[j]
+def findMinQuad(candidates):
+	minVal =  candidates[0]
+	for i in candidates:
+		for j in range(len(candidates)):
+			if candidates[j]<minVal:
+				minVal = candidates[j]
 
 	return minVal
 
 # O(n) solition
 
-def findMinLinear(array):
-	minVal =  array[0]
-	for i in range(len(array)):
-		if array[i]<minVal:
-			minVal = array[i]
+def findMinLinear(candidates):
+	minVal =  candidates[0]
+	for i in range(len(candidates)):
+		if candidates[i]<minVal:
+			minVal = candidates[i]
 
 	return minVal
 

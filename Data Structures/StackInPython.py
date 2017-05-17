@@ -33,19 +33,19 @@ def match(open,close):
 		return False
 
 
-def paranthesis_checker(array):
+def paranthesis_checker(candidates):
 	s=Stack()
 	balanced = True
 	index = 0
-	while(index<len(array)) and balanced:
-		if(array[index]in'([{'):
-			s.push(array[index])
-		elif (array[index]in')}]'):
+	while(index<len(candidates)) and balanced:
+		if(candidates[index]in'([{'):
+			s.push(candidates[index])
+		elif (candidates[index]in')}]'):
 			if s.isEmpty():
 				balanced=False
 			else:
 				last_val =  s.pop()
-				if not match(last_val,array[index]):
+				if not match(last_val,candidates[index]):
 					balanced=False
 		else:
 			continue
@@ -148,7 +148,7 @@ def postfix_evaluation(string):
 print paranthesis_checker('[{()]')
 print decimal_to_any_base(26,26)
 print infix_to_postfix("5 * 3 ^ (4 - 2)")
-print(postfix_evaluation("- + * 2 3 * 5 4 9"))
+# print(postfix_evaluation("- + * 2 3 * 5 4 9"))
 
 # print(s.isEmpty())
 # s.push(4)

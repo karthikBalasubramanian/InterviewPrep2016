@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;LRUCache.java&apos; to &apos;LeetCodeQuestions/src/com.leetcode.questions&apos;&#x0A;- Original project: &apos;LeetCodeQuestions&apos;&#x0A;- Destination element: &apos;LeetCodeQuestions/src/com.leetcode.questions&apos;&#x0A;- Original element: &apos;LRUCache.java&apos;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;com.leetcode.questions" element1="/src&lt;{LRUCache.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1492515328249" units="1" version="1.0"/>
+</session>

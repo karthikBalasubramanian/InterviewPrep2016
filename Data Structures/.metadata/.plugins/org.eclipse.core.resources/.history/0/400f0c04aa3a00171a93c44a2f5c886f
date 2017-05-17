@@ -1,0 +1,40 @@
+package com.tutorials.collection;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class AddNumbers {
+	public static final Logger  logger  = Logger.getLogger(AddNumbers.class.getName());
+
+	public static void main(String [] args){
+		BufferedReader br = null;
+		try {
+			 br = new BufferedReader(new FileReader("numbers.txt"));
+			 String line;
+			 while((line =br.readLine())!=null){
+				 System.out.println(line.toCharArray());
+			 }
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			logger.log(Level.INFO,"file not found exception");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.log(Level.INFO,"next line not found exception");
+		} finally {
+			if(br!=null){
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					logger.log(Level.INFO,"buffered reader cannot be closed exception");
+				}
+			}
+		}
+		
+	}
+
+}

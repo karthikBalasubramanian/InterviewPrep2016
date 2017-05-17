@@ -1,7 +1,7 @@
-#!/home/bks4line/anaconda2/bin/python
+s#!/home/bks4line/anaconda2/bin/python
 # Author: Karthik Balasubramanian
 import math
-
+#  do check this
 class Solution(object):
     def isPrime(self,n):
     	if (n==1):
@@ -21,25 +21,16 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if (n>1):
-        	all_primes = [1 for i in range(n)]
-        	all_primes[0]=0
-        	all_primes[1]=0
+        nums = [1 for i in range(n)]
+        nums[0]=0
+        nums[1]=0
 
-        	ranger = int(math.sqrt(len(all_primes)))+1
-        	
-        	for i in range(2, ranger):	
-        		if all_primes[i]==1:
-        			for j in range(2,n):
-        				index = i*j
-        				if (index)<n:	
-        					all_primes[(index)]=0
-        				
-        					
-        	return sum(all_primes)
-        else:
-        	return 0
+        consider_till = int(math.sqrt(n))+1
+        for i in range(consider_till):
+            if(nums[i]==1):
+                nums[i*i:n:i]= [0]*len(nums[i*i:n:i])
+        return sum(nums)   
 
 
 sol = Solution()
-print sol.countPrimes(3)
+print sol.countPrimes(10)

@@ -8,31 +8,39 @@ def swap(alist,i,j):
 	alist[i]=alist[j]
 	alist[j]=temp
 
-def bubble_sort(array):
-	length_of_array =  len(array)-1
-
-	for i in range(length_of_array,0,-1):
+def bubble_sort(candidates):
+	length_of_candidates =  len(candidates)-1
+	#  bubble sort swaps each position if the prev number is smaller than the current number
+	for i in range(length_of_candidates,0,-1):
+		#  start from the end of the list till 0
 		for j in range(i):
-			if(array[j]>array[j+1]):
-				swap(array,j,j+1)
+			#  run from 0 to i
+			if(candidates[j]>candidates[j+1]):
+				swap(candidates,j,j+1)
+				print candidates
 
-	return array
- 	# for i in range(length_of_array-1):
+	return candidates
+
+	# bubble sort ensures that in one pass, the  largest element is sorted properly.
+
+
+ 	# for i in range(length_of_candidates-1):
  	# 	# why n-i-2 We wont again go to the sorted part
  	# 	#  -2 because the last element has to be accessed. 
- 	# 	for j in range(0,length_of_array-i-2):
+ 	# 	for j in range(0,length_of_candidates-i-2):
 
- 	# 		if(array[j]>array[j+1]):
- 	# 			temp = array[j]
- 	# 			array[j]= array[j+1]
- 	# 			array[j+1]= temp
+ 	# 		if(candidates[j]>candidates[j+1]):
+ 	# 			temp = candidates[j]
+ 	# 			candidates[j]= candidates[j+1]
+ 	# 			candidates[j+1]= temp
 
- 	# return array
+ 	# return candidates
 
- 	# for i in range(length_of_array):
+ 	# for i in range(length_of_candidates):
  	# 	for j in random
 
 
 
 a = [random.randint(1,10) for i in xrange(10)]
+print a
 print bubble_sort(a)
